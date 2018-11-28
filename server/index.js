@@ -11,6 +11,9 @@ app.use(cors());
 const posts = require('./routes/api/posts');
 app.use('/api/posts', posts);
 
-const port = process.env.PORT || 5000;
+app.all('/', async (req, res) => {
+    res.status(404).send();
+});
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server started on port http://localhost:${port}/`));
